@@ -14,7 +14,7 @@ reboot
 apt update && sudo apt upgrade -y
 apt install -y libusb-1.0-0-dev libuhd-dev uhd-host cmake autoconf make
 apt install git
-mkdir /opt/GSM/SoapySDR
+cd /opt/GSM
 git clone https://github.com/pothosware/SoapySDR
 cd /opt/GSM/SoapySDR
 mkdir build && cd build && cmake .. && make -j4 && make install && ldconfig
