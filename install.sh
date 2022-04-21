@@ -242,21 +242,13 @@ cd texinfo-4.13
 ./configure
 make
 make install
-git clone https://github.com/axilirator/gnu-arm-installer.git gnuarm
-cd gnuarm
-#Run the Scripts
-./download.sh
-./build.sh
-export PATH=$PATH:/root/gnuarm/install/bin
-# Now you have cross-compiler ready you can build osmocom with your firmware
-cd /opt/IMSI_Catcher
-git clone git://git.osmocom.org/libosmocore.git
-cd libosmocore
-autoreconf -i
-./configure
-make
-make install
-ldconfig
+#git clone https://github.com/axilirator/gnu-arm-installer.git gnuarm
+#cd gnuarm
+##Run the Scripts
+#./download.sh
+#./build.sh
+#export PATH=$PATH:/root/gnuarm/install/bin
+## Now you have cross-compiler ready you can build osmocom with your firmware
 cd /opt/IMSI_Catcher
 git clone git://git.osmocom.org/libosmo-dsp.git
 cd libosmo-dsp
@@ -294,28 +286,6 @@ cd /opt/IMSI_Catcher/osmo-bts
 git checkout 1.1.0
 autoreconf -fi && ./configure --enable-trx && make -j4 && make install && ldconfig
 
-cd /lib/modules/$(uname -r)/build/certs
-openssl req -new -x509 -newkey rsa:2048 -keyout signing_key.pem -outform DER -out signing_key.x509 -nodes -subj "/CN=Owner/"
-apt install -y gcc-9 g++-9 gcc-7 g++-7 gcc-10 g++-10
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-7
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10
-cd /opt/IMSI_Catcher
-git clone https://github.com/isdn4linux/mISDN
-cd /opt/IMSI_Catcher/mISDN
-rm -Rf /lib/modules/$(uname -r)/kernel/drivers/isdn/hardware/mISDN
-rm -Rf /lib/modules/$(uname -r)/kernel/drivers/isdn/mISDN/
-wget https://raw.githubusercontent.com/bbaranoff/PImpMyPi/main/octvqe.patch
-cp /boot/System.map-$(uname -r) /usr/src/linux-headers-$(uname -r)/System.map
-ln -s /lib/modules/$(uname -r)/build /lib/modules/$(uname -r)/source
-aclocal && automake --add-missing
-./configure
-patch -p0 < octvqe.patch
-make modules
-cp /opt/IMSI_Catcher/mISDN/standalone/drivers/isdn/mISDN/modules.order /usr/src/linux-headers-$(uname -r)
-cp -rn /usr/lib/modules/$(uname -r)/. /usr/src/linux-headers-$(uname -r)
-make modules_install
-depmod -a
 
 update-alternatives --set gcc /usr/bin/gcc-7
 
@@ -334,32 +304,6 @@ make
 make install
 ldconfig
 
-update-alternatives --set gcc /usr/bin/gcc-10
-
-#Asterisk version (11.25.3) :
-wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-11.25.3.tar.gz
-tar zxvf asterisk-11.25.3.tar.gz
-cd /opt/IMSI_Catcher/asterisk-11.25.3
-apt install libncurses-dev libxml2-dev
-./configure
-make
-make install
-make config
-ldconfig
-
-git clone https://github.com/fairwaves/lcr
-cd lcr
-autoreconf -i
-./configure --with-sip --with-gsm-bs --with-gsm-ms --with-asterisk
-make
-make install
-ldconfig
-cp chan_lcr.so /usr/lib/asterisk/modules/
-apt-get install alsa-oss
-modprobe snd-pcm
-modprobe snd-mixer-oss
-modprobe mISDN_core
-modprobe mISDN_dsp
 
 git clone https://github.com/bbaranoff/lcr_conf /etc/usr/local/lcr
 sudo apt update
