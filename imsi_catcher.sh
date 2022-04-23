@@ -59,7 +59,7 @@ cd src
 sed -i -e  's/#CFLAGS += -DCONFIG_TX_ENABLE/CFLAGS += -DCONFIG_TX_ENABLE/g' target/firmware/Makefile
 make HOST_layer23_CONFARGS=--enable-transceiver nofirmware
 cd /opt/IMSI_Catcher
-
+update-alternatives --set gcc /usr/bin/gcc-9
 apt install -y libortp-dev
 cd /opt/IMSI_Catcher
 git clone https://github.com/osmocom/libosmo-abis
