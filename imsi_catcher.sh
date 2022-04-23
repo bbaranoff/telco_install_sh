@@ -33,6 +33,7 @@ make install
 #./build.sh
 #export PATH=$PATH:/root/gnuarm/install/bin
 # Now you have cross-compiler ready you can build osmocom with your firmware
+update-alternative --set gcc /usr/bin/gcc-9
 cd /opt/IMSI_Catcher
 git clone git://git.osmocom.org/libosmocore.git
 cd libosmocore
@@ -50,6 +51,7 @@ autoreconf -i
 make
 make install
 cd /opt/IMSI_Catcher
+update-alternative --set gcc /usr/bin/gcc-4.9
 git clone https://github.com/osmocom/osmocom-bb trx
 cd trx
 git checkout jolly/testing
