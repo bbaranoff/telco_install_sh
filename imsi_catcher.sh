@@ -61,6 +61,7 @@ make HOST_layer23_CONFARGS=--enable-transceiver nofirmware
 cd /opt/IMSI_Catcher
 
 apt install -y libortp-dev
+cd /opt/IMSI_Catcher
 git clone https://github.com/osmocom/libosmo-abis
 cd /opt/IMSI_Cacher/libosmo-abis
 git checkout 0.8.1
