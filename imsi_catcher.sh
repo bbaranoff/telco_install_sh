@@ -85,7 +85,7 @@ git checkout 0.8.1
 autoreconf -fi && ./configure --enable-trx && make -j4 && make install && ldconfig
 
 cd /opt/IMSI_catcher
-wget https://sourceforge.net/projects/opencore-amr/files/opencore-amr/opencore-amr-0.1.5.tar.gz
+wget https://github.com/bbaranoff/telco_install_sh/raw/main/opencore-amr-0.1.5.tar.gz
 tar xvzf opencore-amr-0.1.5.tar.gz
 cd opencore-amr-0.1.5
 ./configure
