@@ -140,6 +140,7 @@ patch -p1 < tcptls.patch
 ./configure
 make -j$(nproc)
 make install
+make samples
 make config
 ldconfig
 
