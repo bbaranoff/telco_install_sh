@@ -21,7 +21,7 @@ apt remove texinfo
 mkdir /opt/IMSI_Catcher
 cd /opt/IMSI_Catcher
 wget http://ftp.gnu.org/gnu/texinfo/texinfo-4.13.tar.gz
-gzip -dc < texinfo-4.13.tar.gz | tar -xf -
+tar xvf texinfo-4.13.tar.gz
 cd texinfo-4.13
 ./configure
 make
