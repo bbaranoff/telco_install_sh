@@ -16,7 +16,7 @@ apt install -y gcc-5 g++-5 libssl1.0-dev
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5
 sed -i '$ d' /etc/apt/sources.list
 apt update
-update-alternative --set gcc /usr/bin/gcc-4.9
+update-alternatives --set gcc /usr/bin/gcc-4.9
 apt remove texinfo
 mkdir /opt/IMSI_Catcher
 cd /opt/IMSI_Catcher
