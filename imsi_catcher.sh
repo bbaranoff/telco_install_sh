@@ -81,7 +81,14 @@ cd /opt/IMSI_Catcher/osmo-bts
 git checkout 0.8.1
 autoreconf -fi && ./configure --enable-trx && make -j4 && make install && ldconfig
 
-wget https://raw.githubusercontent.com/bbaranoff/PImpMyPi/main/ybts.conf
+cd /opt/IMSI_catcher
+wget https://sourceforge.net/projects/opencore-amr/files/opencore-amr/opencore-amr-0.1.5.tar.gz
+tar xvzf opencore-amr-0.1.5.tar.gz
+cd opencore-amr-0.1.5
+./configure
+make
+make install
+ldconfig
 cp ybts.conf /usr/local/etc/yate/ybts.conf
 cd /lib/modules/$(uname -r)/build/certs
 openssl req -new -x509 -newkey rsa:2048 -keyout signing_key.pem -outform DER -out signing_key.x509 -nodes -subj "/CN=Owner/"
