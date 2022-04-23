@@ -51,7 +51,7 @@ autoreconf -i
 make
 make install
 cd /opt/IMSI_Catcher
-update-alternatives --set gcc /usr/bin/gcc-4.9
+update-alternatives --set gcc /usr/bin/gcc-5
 git clone https://github.com/osmocom/osmocom-bb trx
 cd trx
 git checkout jolly/testing
@@ -91,7 +91,6 @@ cd opencore-amr-0.1.5
 make
 make install
 ldconfig
-cp ybts.conf /usr/local/etc/yate/ybts.conf
 cd /lib/modules/$(uname -r)/build/certs
 openssl req -new -x509 -newkey rsa:2048 -keyout signing_key.pem -outform DER -out signing_key.x509 -nodes -subj "/CN=Owner/"
 cd /opt/IMSI_Catcher/
