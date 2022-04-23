@@ -21,5 +21,5 @@ In 3 shells
 ```
 bash run_first.sh
 bash run_sec.sh
-bash run last.sh
+bash run_last.sh
 ```
