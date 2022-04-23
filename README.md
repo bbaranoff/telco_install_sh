@@ -6,6 +6,7 @@ Installation
 ============
 
 ```
+git clone https://github.com/bbaranoff/telco_install_sh
 bash install_kernel.sh
 ```
 You will be prompted for amd64 arm64
