@@ -1,9 +1,19 @@
 #!/bin/bash
 apt update && apt upgrade
-apt install gcc-9 g++-9 gcc-10 g++-10
+rm -rf /opt/GSM
+mkdir /opt/GSM
+cd /opt/GSM
+read -p "Architecture arm64 or amd64 ?"
+wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.3/linux-headers-5.3.0-050300_5.3.0-050300.201909152230_all.deb
+wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.3/linux-headers-5.3.0-050300-generic_5.3.0-050300.201909152230_$ARCH.deb
+wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.3/linux-image-unsigned-5.3.0-050300-generic_5.3.0-050300.201909152230_$ARCH.deb
+wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.3/linux-modules-5.3.0-050300-generic_5.3.0-050300.201909152230_$ARCH.deb
+sudo dpkg -i *.deb
+read -p "reboot and choose kernel 5.3 ? Ctrl-C to exit"
+apt install gcc-9 g++-9 gcc-10 g++-10 -y
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
-apt install gcc-4.9 g++-4.9 gcc-7 g++-7
+apt install gcc-4.9 g++-4.9 gcc-7 g++-7 -y
 sed -i '$ d' /etc/apt/sources.list
 apt update
 apt install build-essential libgmp-dev libx11-6 libx11-dev flex libncurses5 libncurses5-dev libncursesw5 libpcsclite-dev zlib1g-dev libmpfr4 libmpc3 lemon aptitude libtinfo-dev libtool shtool autoconf git-core pkg-config make libmpfr-dev libmpc-dev libtalloc-dev libfftw3-dev libgnutls28-dev libssl1.0-dev libtool-bin libxml2-dev sofia-sip-bin libsofia-sip-ua-dev sofia-sip-bin libncursesw5-dev libncursesw5-dbg bison libgmp3-dev alsa-oss
