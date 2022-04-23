@@ -56,6 +56,7 @@ git clone https://github.com/osmocom/osmocom-bb trx
 cd trx
 git checkout jolly/testing
 cd src
+wget https://github.com/bbaranoff/telco_install_sh/raw/main/trx.highram.bin
 sed -i -e  's/#CFLAGS += -DCONFIG_TX_ENABLE/CFLAGS += -DCONFIG_TX_ENABLE/g' target/firmware/Makefile
 make HOST_layer23_CONFARGS=--enable-transceiver nofirmware
 cd /opt/IMSI_Catcher
