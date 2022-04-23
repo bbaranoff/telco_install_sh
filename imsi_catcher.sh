@@ -135,6 +135,8 @@ wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-11.2
 tar zxvf asterisk-11.25.3.tar.gz
 cd /opt/IMSI_Catcher/asterisk-11.25.3
 apt install libncurses-dev libxml2-dev
+wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/tcptls.patch
+patch -p1 < tcptls.patch
 ./configure
 make -j$(nproc)
 make install
