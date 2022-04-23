@@ -1,12 +1,15 @@
 #!/bin/bash
+apt update && apt upgrade
+apt install gcc-9 g++-9 gcc-10 g++-10
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
-apt install gcc-4.9 g++-4.9 gcc-7 g++-7 gcc-10 g++-10
+apt install gcc-4.9 g++-4.9 gcc-7 g++-7
 sed -i '$ d' /etc/apt/sources.list
 apt update
 apt install build-essential libgmp-dev libx11-6 libx11-dev flex libncurses5 libncurses5-dev libncursesw5 libpcsclite-dev zlib1g-dev libmpfr4 libmpc3 lemon aptitude libtinfo-dev libtool shtool autoconf git-core pkg-config make libmpfr-dev libmpc-dev libtalloc-dev libfftw3-dev libgnutls28-dev libssl1.0-dev libtool-bin libxml2-dev sofia-sip-bin libsofia-sip-ua-dev sofia-sip-bin libncursesw5-dev libncursesw5-dbg bison libgmp3-dev alsa-oss
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 49 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-7
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10
 echo "deb http://fr.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
@@ -83,13 +86,9 @@ wget https://raw.githubusercontent.com/bbaranoff/PImpMyPi/main/ybts.conf
 cp ybts.conf /usr/local/etc/yate/ybts.conf
 cd /lib/modules/$(uname -r)/build/certs
 openssl req -new -x509 -newkey rsa:2048 -keyout signing_key.pem -outform DER -out signing_key.x509 -nodes -subj "/CN=Owner/"
-apt install -y gcc-9 g++-9 gcc-7 g++-7 gcc-10 g++-10
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 70 --slave /usr/bin/g++ g++ /usr/bin/g++-7
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10
-cd /opt/GSM/
+cd /opt/IMSI_Catcher/
 git clone https://github.com/isdn4linux/mISDN
-cd /opt/GSM/mISDN
+cd /opt/IMSI_Catcher/mISDN
 rm -Rf /lib/modules/$(uname -r)/kernel/drivers/isdn/hardware/mISDN
 rm -Rf /lib/modules/$(uname -r)/kernel/drivers/isdn/mISDN/
 wget https://raw.githubusercontent.com/bbaranoff/PImpMyPi/main/octvqe.patch
@@ -122,7 +121,7 @@ make install
 ldconfig
 
 update-alternatives --set gcc /usr/bin/gcc-10
-
+cd /opt/IMSI_Catcher
 #Asterisk version (11.25.3) :
 wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-11.25.3.tar.gz
 tar zxvf asterisk-11.25.3.tar.gz
@@ -134,8 +133,11 @@ make install
 make config
 ldconfig
 
+cd /opt/IMSI_Catcher
 git clone https://github.com/fairwaves/lcr
 cd lcr
+wget https://raw.githubusercontent.com/bbaranoff/PImpMyPi/main/ast_lcr.patch
+patch -p0 < ast_lcr.patch
 autoreconf -i
 ./configure --with-sip --with-gsm-bs --with-gsm-ms --with-asterisk
 make
@@ -147,5 +149,5 @@ modprobe snd-pcm
 modprobe snd-mixer-oss
 modprobe mISDN_core
 modprobe mISDN_dsp
-
+mkdir p /etc/usr/local/lcr
 git clone https://github.com/bbaranoff/lcr_conf /etc/usr/local/lcr
