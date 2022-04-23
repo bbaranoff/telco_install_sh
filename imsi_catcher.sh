@@ -136,7 +136,7 @@ tar zxvf asterisk-11.25.3.tar.gz
 cd /opt/IMSI_Catcher/asterisk-11.25.3
 apt install libncurses-dev libxml2-dev
 ./configure
-make
+make -j$(nproc)
 make install
 make config
 ldconfig
