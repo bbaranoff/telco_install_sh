@@ -1,0 +1,11 @@
+--- a/main/tcptls.c	2017-09-19 18:03:38.000000000 +0200
++++ b/main/tcptls.c	2022-04-23 17:08:34.659949300 +0200
+@@ -776,7 +776,7 @@
+ #ifndef OPENSSL_NO_SSL2
+ 		if (ast_test_flag(&cfg->flags, AST_SSL_SSLV2_CLIENT)) {
+ 			ast_log(LOG_WARNING, "Usage of SSLv2 is discouraged due to known vulnerabilities. Please use 'tlsv1' or leave the TLS method unspecified!\n");
+-			cfg->ssl_ctx = SSL_CTX_new(SSLv2_client_method());
++			cfg->ssl_ctx = SSL_CTX_new(SSLv23_client_method());
+ 		} else
+ #endif
+ #ifndef OPENSSL_NO_SSL3_METHOD
