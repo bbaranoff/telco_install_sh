@@ -1,5 +1,5 @@
 #!/bin/bash
-apt update && apt upgrade
+apt update && apt upgrade -y
 rm -rf /opt/GSM
 mkdir /opt/GSM
 cd /opt/GSM
