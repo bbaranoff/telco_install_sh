@@ -63,7 +63,7 @@ cd /opt/IMSI_Catcher
 apt install -y libortp-dev
 cd /opt/IMSI_Catcher
 git clone https://github.com/osmocom/libosmo-abis
-cd /opt/IMSI_Cacher/libosmo-abis
+cd /opt/IMSI_Catcher/libosmo-abis
 git checkout 0.8.1
 autoreconf -fi && ./configure --disable-dahdi && make -j4 && make install && ldconfig
 
