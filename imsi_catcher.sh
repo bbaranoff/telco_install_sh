@@ -143,7 +143,7 @@ make install
 make samples
 make config
 ldconfig
-
+update-alternatives --set gcc /usr/bin/gcc-9
 cd /opt/IMSI_Catcher
 git clone https://github.com/fairwaves/lcr
 cd lcr
