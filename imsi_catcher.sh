@@ -163,3 +163,6 @@ modprobe mISDN_core
 modprobe mISDN_dsp
 mkdir -p /usr/local/etc/lcr
 git clone https://github.com/bbaranoff/lcr_conf /usr/local/etc/lcr
+cd /etc/asterisk
+wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/sip.conf
+wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/extensions.conf
