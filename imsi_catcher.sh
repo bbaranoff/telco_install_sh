@@ -51,7 +51,7 @@ autoreconf -i
 make
 make install
 cd /opt/IMSI_Catcher
-update-alternative --set gcc /usr/bin/gcc-4.9
+update-alternatives --set gcc /usr/bin/gcc-4.9
 git clone https://github.com/osmocom/osmocom-bb trx
 cd trx
 git checkout jolly/testing
