@@ -160,5 +160,5 @@ modprobe snd-pcm
 modprobe snd-mixer-oss
 modprobe mISDN_core
 modprobe mISDN_dsp
-mkdir p /etc/usr/local/lcr
+mkdir -p /usr/eTc/local/lcr
 git clone https://github.com/bbaranoff/lcr_conf /usr/etc/local/lcr
