@@ -13,5 +13,6 @@ apt install linux-base
 sudo dpkg -i *.deb
 update-grub
 update-initramfs
+update-grub
 read -p "reboot and choose kernel 5.3 ? Ctrl-C to exit/Enter to reboot"
 reboot
