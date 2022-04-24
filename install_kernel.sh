@@ -12,7 +12,7 @@ wget -c https://kernel.ubuntu.com/~kernel-ppa/mainline/v5.3/linux-modules-5.3.0-
 apt install linux-base
 sudo dpkg -i *.deb
 update-grub
-update-initramfs
+update-initramfs -u
 update-grub
 read -p "reboot and choose kernel 5.3 ? Ctrl-C to exit/Enter to reboot"
 reboot
