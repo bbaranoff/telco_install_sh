@@ -172,3 +172,4 @@ mkdir /root/nitb
 cd /root/nitb
 wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/openbsc.cfg
 wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/nitb.sh
+chmod +x nitb.sh
