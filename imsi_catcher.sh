@@ -163,6 +163,8 @@ modprobe mISDN_core
 modprobe mISDN_dsp
 mkdir -p /usr/local/etc/
 git clone https://github.com/bbaranoff/lcr_conf /usr/local/etc/lcr
+sudo chmod 755 /usr/local/lcr
+sudo chmod 644 /usr/local/lcr/*
 cd /etc/asterisk
 mv sip.conf sip.conf.bak
 mv extensions.conf extensions.conf.bak
