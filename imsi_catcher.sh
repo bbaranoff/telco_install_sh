@@ -90,7 +90,7 @@ wget https://github.com/bbaranoff/telco_install_sh/raw/main/opencore-amr-0.1.5.t
 tar xvzf opencore-amr-0.1.5.tar.gz
 cd opencore-amr-0.1.5
 ./configure
-make
+make -j$(nproc)
 make install
 ldconfig
 cd /lib/modules/$(uname -r)/build/certs
