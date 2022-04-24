@@ -168,3 +168,7 @@ mv sip.conf sip.conf.bak
 mv extensions.conf extensions.conf.bak
 wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/sip.conf
 wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/extensions.conf
+mkdir /root/nitb
+cd /root/nitb
+wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/openbsc.cfg
+wget https://raw.githubusercontent.com/bbaranoff/telco_install_sh/main/nitb.sh
