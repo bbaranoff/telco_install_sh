@@ -6,6 +6,7 @@ Get VMWare Workstation Player
 For Windows : https://www.vmware.com/go/getplayer-win
 
 HW http://shop.sysmocom.de/products/cp2102-25 (x2)
+
 HW C118 C123 motorola for example https://www.ebay.fr/itm/224908022723 (x2)
 
 ALL IN ROOT !!!
