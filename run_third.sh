@@ -7,7 +7,6 @@ sudo ./nitb.sh &
 cd /opt/IMSI_Catcher/trx/src/host/layer23/src/transceiver
 sudo ./transceiver -a 4 -2 -r 99 &
 sudo lcr start &&
-sudo killall -9 asterisk
 sudo killall -9 lcr
 sudo killall -9 transceiver
 sudo killall -9 osmo-nitb
