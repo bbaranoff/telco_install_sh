@@ -18,7 +18,7 @@ sed -i '$ d' /etc/apt/sources.list
 apt update
 update-alternatives --set gcc /usr/bin/gcc-4.9
 apt remove texinfo
-mkdir /opt/IMSI_Catcher
+mkdir -p /opt/IMSI_Catcher
 cd /opt/IMSI_Catcher
 wget http://ftp.gnu.org/gnu/texinfo/texinfo-4.13.tar.gz
 tar xvf texinfo-4.13.tar.gz
