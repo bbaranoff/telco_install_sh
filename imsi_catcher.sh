@@ -1,7 +1,7 @@
 #!/bin/bash
 read -p "Architecture ? amd64, armel, arm64 ?" ARCH
 apt install gcc-9 g++-9 gcc-10 g++-10 git -y
-echo "deb http://fr.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
+echo "deb [arch=$ARCH] http://fr.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
 apt install gcc-4.9 g++-4.9 gcc-7 g++-7 -y
 sed -i '$ d' /etc/apt/sources.list
