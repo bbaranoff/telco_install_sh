@@ -27,11 +27,10 @@ cd texinfo-4.13
 ./configure
 make
 make install
-#git clone https://github.com/axilirator/gnu-arm-installer.git gnuarm
+#git clone https://github.com/bbaranoff/gnu-arm-installer.git gnuarm
 #cd gnuarm
 ##Run the Scripts
-#./download.sh
-#./build.sh
+#bash gnu-arm-installer.sh
 #export PATH=$PATH:/root/gnuarm/install/bin
 # Now you have cross-compiler ready you can build osmocom with your firmware
 update-alternatives --set gcc /usr/bin/gcc-9
