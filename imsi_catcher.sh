@@ -1,5 +1,7 @@
 #!/bin/bash
 read -p "Architecture ? amd64, armel, arm64 ?" ARCH
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 3B4FE6ACC0B21F32 40976EAF437D05B5
+cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 apt install gcc-9 g++-9 gcc-10 g++-10 git -y
 echo "deb [arch=$ARCH] http://fr.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
@@ -18,6 +20,7 @@ update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bi
 sed -i '$ d' /etc/apt/sources.list
 apt update
 update-alternatives --set gcc /usr/bin/gcc-4.9
+exit
 apt remove texinfo
 mkdir -p /opt/IMSI_Catcher
 cd /opt/IMSI_Catcher
