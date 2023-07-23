@@ -25,8 +25,6 @@ update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bi
 sed -i '$ d' /etc/apt/sources.list
 apt update
 update-alternatives --set gcc /usr/bin/gcc-4.9
-exit
-
 apt remove texinfo
 mkdir -p /opt/IMSI_Catcher
 cd /opt/IMSI_Catcher
