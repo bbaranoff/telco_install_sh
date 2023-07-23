@@ -1,11 +1,12 @@
 #!/bin/bash
 read -p "Architecture ? amd64, armel, arm64 ?" ARCH
+sudo apt install autoconf -y
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 3B4FE6ACC0B21F32 40976EAF437D05B5
 cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 apt install gcc-9 g++-9 gcc-10 g++-10 git -y
 echo "deb [arch=$ARCH] http://fr.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
-apt install gcc-4.9 g++-4.9 gcc-7 g++-7 -y
+apt install gcc-4.9 g++-4.9 -y
 sed -i '$ d' /etc/apt/sources.list
 apt update
 apt install -y build-essential libusb-1.0-0-dev libsqlite3-dev libsctp-dev libgmp-dev libx11-6 libx11-dev flex libncurses5 libdbd-sqlite3 libdbi-dev libncurses5-dev libncursesw5 libpcsclite-dev zlib1g-dev libmpfr4 libmpc3 lemon aptitude libtinfo-dev libtool shtool autoconf git-core pkg-config make libmpfr-dev libmpc-dev libtalloc-dev libfftw3-dev libgnutls28-dev libtool-bin libxml2-dev sofia-sip-bin libsofia-sip-ua-dev sofia-sip-bin libncursesw5-dev bison libgmp3-dev alsa-oss
@@ -15,7 +16,7 @@ update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bi
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10
 echo "deb [arch=$ARCH] http://fr.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
-apt install -y gcc-5 g++-5 libssl1.0-dev
+apt install -y gcc-5 g++-5 libssl1.0-dev gcc-7 g++-7
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5
 sed -i '$ d' /etc/apt/sources.list
 apt update
