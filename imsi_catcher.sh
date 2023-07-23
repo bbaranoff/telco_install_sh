@@ -16,12 +16,17 @@ update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bi
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10
 echo "deb [arch=$ARCH] http://fr.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse" >> /etc/apt/sources.list
 apt update
-apt install -y gcc-5 g++-5 libssl1.0-dev gcc-7 g++-7
+apt install -y gcc-5 g++-5 libssl1.0-dev
+sed -i '$ d' /etc/apt/sources.list
+echo "deb [arch=$ARCH] http://fr.archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse" >> /etc/apt/sources.list
+apt update
+apt install -y gcc-7 g++-7
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5
 sed -i '$ d' /etc/apt/sources.list
 apt update
 update-alternatives --set gcc /usr/bin/gcc-4.9
 exit
+
 apt remove texinfo
 mkdir -p /opt/IMSI_Catcher
 cd /opt/IMSI_Catcher
